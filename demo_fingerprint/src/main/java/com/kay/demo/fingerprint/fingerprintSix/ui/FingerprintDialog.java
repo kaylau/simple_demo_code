@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.text.TextUtils;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,20 +16,11 @@ import android.widget.TextView;
 
 import com.kay.demo.fingerprint.R;
 import com.kay.demo.fingerprint.fingerprintSix.FingerprintSDK;
-import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintPaymentCallback;
-import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintUnlockCallback;
+import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintCallback;
 import com.kay.demo.fingerprint.fingerprintSix.core.FingerprintCore;
 import com.kay.demo.fingerprint.fingerprintSix.core.FingerprintMain;
 import com.kay.demo.fingerprint.fingerprintSix.util.FingerprintConstants;
-import com.kay.demo.fingerprint.fingerprintSix.util.FingerprintSPUtil;
 import com.kay.demo.fingerprint.util.LogUtil;
-import com.kay.demo.fingerprint.util.RSAHelper;
-
-import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
-import org.bouncycastle.asn1.pkcs.RSAPrivateKey;
-
-import java.security.PublicKey;
-import java.util.Map;
 
 import javax.crypto.Cipher;
 
@@ -39,8 +28,7 @@ import javax.crypto.Cipher;
 public class FingerprintDialog extends DialogFragment implements View.OnClickListener {
 
     private static final String TAG = FingerprintDialog.class.getSimpleName();
-    private static FingerprintUnlockCallback unlockCallback;
-    private static FingerprintPaymentCallback paymentCallback;
+    private static FingerprintCallback unlockCallback;
     private static FingerprintCore fingerprintCore;
     private static int verifyType;
 
@@ -50,15 +38,9 @@ public class FingerprintDialog extends DialogFragment implements View.OnClickLis
     public int errorNum = 0;
 
 
-    public static FingerprintDialog newInstance(FingerprintUnlockCallback callback, FingerprintCore core, int vType) {
+    public static FingerprintDialog newInstance(FingerprintCallback callback, FingerprintCore core, int vType) {
         FingerprintDialog f = init(core, vType);
         unlockCallback = callback;
-        return f;
-    }
-
-    public static FingerprintDialog newInstance(FingerprintPaymentCallback callback, FingerprintCore core, int vType) {
-        FingerprintDialog f = init(core, vType);
-        paymentCallback = callback;
         return f;
     }
 
@@ -128,7 +110,7 @@ public class FingerprintDialog extends DialogFragment implements View.OnClickLis
             @Override
             public void run() {
                 //页面加载完成之后再调验证逻辑
-                if (unlockCallback == null && paymentCallback == null) {
+                if (unlockCallback == null) {
                     LogUtil.e(TAG, "传过来的回调为null");
                     return;
                 }
@@ -222,9 +204,6 @@ public class FingerprintDialog extends DialogFragment implements View.OnClickLis
                 && FingerprintMain.getInstance().isFingerprintUnlock(verifyType)) {
             unlockCallback.onFailed(code, msg);
 
-        } else if (paymentCallback != null
-                && FingerprintMain.getInstance().isFingerprintPayment(verifyType)) {
-            paymentCallback.onFailed(code, msg);
         }
         dismissAllowingStateLoss();
     }
@@ -234,55 +213,10 @@ public class FingerprintDialog extends DialogFragment implements View.OnClickLis
                 && FingerprintMain.getInstance().isFingerprintUnlock(verifyType)) {
             unlockCallback.onSuccess(results);
 
-        } else if (paymentCallback != null
-                && FingerprintMain.getInstance().isFingerprintPayment(verifyType)) {
-            onFingerprintPaymentCallback(Base64.encodeToString(results.getIV(), Base64.URL_SAFE));
         }
         dismissAllowingStateLoss();
     }
 
-    private void onFingerprintPaymentCallback(String iv) {
-        if (verifyType == FingerprintSDK.FINGERPRINT_PAY_START) {
-            // 生成RSA秘钥
-            String publicKeyStr = "";
-            String privateKeyStr = "";
-            Map<String, Object> keys;
-            try {
-                keys = RSAHelper.getKeys();
-                for (Map.Entry<String, Object> entry : keys.entrySet()) {
-                    String key = entry.getKey();
-                    Object obj = entry.getValue();
-                    if (TextUtils.equals(key, RSAHelper.PUBLIC_KEY)) {
-                        PublicKey publicKey = (PublicKey) obj;
-                        publicKeyStr = Base64.encodeToString(publicKey.getEncoded(), Base64.DEFAULT);
-                    } else if (TextUtils.equals(key, RSAHelper.PRIVATE_KEY)) {
-                        PrivateKeyInfo pki = (PrivateKeyInfo) obj;
-                        RSAPrivateKey pkcs1Key = RSAPrivateKey.getInstance(pki.parsePrivateKey());
-                        privateKeyStr = Base64.encodeToString(pkcs1Key.getEncoded(), Base64.DEFAULT);
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                LogUtil.e(TAG, "onCreateRsaKey Exception: " + e.toString());
-            }
-            if (TextUtils.isEmpty(publicKeyStr) || TextUtils.isEmpty(privateKeyStr)) {
-                // 秘钥为空 认为开启指纹支付失败
-                onFailCallback(FingerprintSDK.CODE_9, "");
-                LogUtil.e(TAG, "指纹支付开启, 验证成功, 但是RSA秘钥生成失败...");
-
-            } else {
-                FingerprintSPUtil.putRSA_private(getActivity(), FingerprintMain.getInstance().getLname(), privateKeyStr);
-                paymentCallback.onSuccess(iv, publicKeyStr, "");
-            }
-        } else if (verifyType == FingerprintSDK.FINGERPRINT_PAY_RE_START) {
-            paymentCallback.onSuccess(iv, "", "");
-
-        } else {
-            // 指纹支付验证时, 不返回公钥
-            String rsa_private = FingerprintSPUtil.getRSA_private(getActivity(), FingerprintMain.getInstance().getLname());
-            paymentCallback.onSuccess(iv, "", rsa_private);
-        }
-    }
 
     @Override
     public void onDestroy() {
@@ -293,9 +227,6 @@ public class FingerprintDialog extends DialogFragment implements View.OnClickLis
         }
         if (unlockCallback != null) {
             unlockCallback = null;
-        }
-        if (paymentCallback != null) {
-            paymentCallback = null;
         }
         FingerprintMain.getInstance().onDestroy();
     }

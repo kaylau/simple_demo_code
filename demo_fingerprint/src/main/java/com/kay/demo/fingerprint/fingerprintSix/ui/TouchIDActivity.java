@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 
 import com.kay.demo.fingerprint.R;
 import com.kay.demo.fingerprint.fingerprintSix.FingerprintSDK;
-import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintUnlockCallback;
+import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintCallback;
 import com.kay.demo.fingerprint.fingerprintSix.util.FingerprintSPUtil;
 import com.kay.demo.fingerprint.util.LogUtil;
 import com.kay.demo.fingerprint.util.ToastUtil;
@@ -44,6 +44,12 @@ public class TouchIDActivity extends AppCompatActivity implements View.OnClickLi
     private void initView() {
         findViewById(R.id.ll_switch_touchid_pay).setOnClickListener(this);
         cb_switch_touchID_pay = findViewById(R.id.cb_switch_touchid_pay);
+        String iv = FingerprintSPUtil.getString(mContext, "lName");
+        if (TextUtils.isEmpty(iv)) {
+            cb_switch_touchID_pay.setChecked(false);
+        } else {
+            cb_switch_touchID_pay.setChecked(true);
+        }
     }
 
     @Override
@@ -68,7 +74,7 @@ public class TouchIDActivity extends AppCompatActivity implements View.OnClickLi
         FingerprintSDK.startAuthenticateUnlock(this,
                 "lName",
                 FingerprintSDK.FINGERPRINT_LOGIN_START,
-                new FingerprintUnlockCallback() {
+                new FingerprintCallback() {
                     @Override
                     public void onSuccess(Cipher cipher) {
                         String iv = Base64.encodeToString(cipher.getIV(), Base64.URL_SAFE).trim();

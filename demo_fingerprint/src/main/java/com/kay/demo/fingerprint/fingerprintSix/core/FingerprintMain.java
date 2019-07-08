@@ -6,14 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 
 import com.kay.demo.fingerprint.fingerprintSix.FingerprintSDK;
-import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintPaymentCallback;
-import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintUnlockCallback;
+import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintCallback;
 import com.kay.demo.fingerprint.fingerprintSix.ui.CommonDialog;
 import com.kay.demo.fingerprint.fingerprintSix.ui.FingerprintDialog;
 import com.kay.demo.fingerprint.util.LogUtil;
 
-
 public class FingerprintMain {
+
     private final static String TAG = FingerprintMain.class.getSimpleName();
     private static FingerprintMain instance;
 
@@ -22,9 +21,7 @@ public class FingerprintMain {
     public int fingerprint_type; //用于区分是  开启、验证
     private FingerprintDialog fragment;
 
-    private FingerprintPaymentCallback paymentCallback;
-    private FingerprintUnlockCallback unlockCallback;
-    private String lname;
+    private FingerprintCallback unlockCallback;
 
     public static FingerprintMain getInstance() {
         if (instance == null) {
@@ -83,7 +80,6 @@ public class FingerprintMain {
     public void startAuthenticate(Activity activity, String LName, int verifyType) {
         // Android Key Store里面key的别名 这个名字应该是保证唯一的，建议使用APPID,这是androidstyore    (app包名+lname)
         String keyStoreAliasName = activity.getPackageName() + LName;
-        this.lname = LName;
         fingerprint_type = verifyType;
         String iv = FingerprintSDK.getIV(activity);
 
@@ -143,10 +139,6 @@ public class FingerprintMain {
             FragmentTransaction ft = activity.getFragmentManager().beginTransaction();
             if (isFingerprintUnlock(verifyType)) {
                 fragment = FingerprintDialog.newInstance(unlockCallback, mFingerprintCore, verifyType);
-
-            } else if (isFingerprintPayment(verifyType)) {
-                fragment = FingerprintDialog.newInstance(paymentCallback, mFingerprintCore, verifyType);
-
             }
             ft.add(fragment, "fingerprintDialog");
             ft.commitAllowingStateLoss();
@@ -161,8 +153,6 @@ public class FingerprintMain {
         if (unlockCallback != null && (isFingerprintUnlock(fingerprint_type))) {
             unlockCallback.onFailed(errCode, errMsg);
 
-        } else if (paymentCallback != null && (isFingerprintPayment(fingerprint_type))) {
-            paymentCallback.onFailed(errCode, errMsg);
         }
     }
 
@@ -191,18 +181,6 @@ public class FingerprintMain {
     }
 
     /**
-     * 判断是否为指纹支付
-     *
-     * @param verifyType
-     * @return
-     */
-    public boolean isFingerprintPayment(int verifyType) {
-        return verifyType == FingerprintSDK.FINGERPRINT_PAY_START
-                || verifyType == FingerprintSDK.FINGERPRINT_PAY_VERIFY
-                || verifyType == FingerprintSDK.FINGERPRINT_PAY_RE_START;
-    }
-
-    /**
      * 判断是否为指纹解锁
      *
      * @param verifyType
@@ -211,18 +189,6 @@ public class FingerprintMain {
     public boolean isFingerprintUnlock(int verifyType) {
         return verifyType == FingerprintSDK.FINGERPRINT_LOGIN_START
                 || verifyType == FingerprintSDK.FINGERPRINT_LOGIN_VERIFY;
-    }
-
-    /**
-     * 取消正进行的指纹验证
-     */
-    public void cancelFingerprintRecognition() {
-        if (mFingerprintCore != null && mFingerprintCore.isAuthenticating()) {
-            mFingerprintCore.cancelAuthenticate();
-            if (fragment != null) {
-                fragment.dismissAllowingStateLoss();
-            }
-        }
     }
 
     public void onDestroy() {
@@ -234,15 +200,8 @@ public class FingerprintMain {
         }
     }
 
-    public void setPaymentCallback(FingerprintPaymentCallback paymentCallback) {
-        this.paymentCallback = paymentCallback;
-    }
-
-    public void setUnlockCallback(FingerprintUnlockCallback unlockCallback) {
+    public void setUnlockCallback(FingerprintCallback unlockCallback) {
         this.unlockCallback = unlockCallback;
     }
 
-    public String getLname() {
-        return lname;
-    }
 }

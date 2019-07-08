@@ -5,23 +5,15 @@ import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 
-import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintPaymentCallback;
-import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintUnlockCallback;
+import com.kay.demo.fingerprint.fingerprintSix.callback.FingerprintCallback;
 import com.kay.demo.fingerprint.fingerprintSix.core.FingerprintMain;
 import com.kay.demo.fingerprint.fingerprintSix.util.FingerprintConstants;
 import com.kay.demo.fingerprint.fingerprintSix.util.FingerprintSPUtil;
-import com.kay.demo.fingerprint.fingerprintSix.util.FingerprintUtil;
 import com.kay.demo.fingerprint.util.LogUtil;
-
 
 public class FingerprintSDK {
 
     private static final String TAG = FingerprintSDK.class.getSimpleName();
-
-    /**
-     * 验证成功
-     */
-    public static int CODE_SUCCESS = 1000;
 
     /**
      * 错误指纹--sdk 指纹验证失败3次
@@ -135,7 +127,7 @@ public class FingerprintSDK {
      * @param verifyType 传入当前验证类型
      * @param callback   指纹验证后的回调
      */
-    public static void startAuthenticateUnlock(Activity activity, String LName, int verifyType, FingerprintUnlockCallback callback) {
+    public static void startAuthenticateUnlock(Activity activity, String LName, int verifyType, FingerprintCallback callback) {
         LogUtil.d(TAG, "业务层开始调 startAuthenticate ");
 
         if (callback == null) {
@@ -154,55 +146,6 @@ public class FingerprintSDK {
         }
         FingerprintMain.getInstance().setUnlockCallback(callback);
         FingerprintMain.getInstance().startAuthenticate(activity, LName, verifyType);
-    }
-
-    /**
-     * 开始验证指纹--支付
-     *
-     * @param activity   传入当前activity
-     * @param LName
-     * @param verifyType 传入当前验证类型
-     * @param callback   指纹验证后的回调
-     */
-    public static void startAuthenticatePayment(Activity activity, String LName, int verifyType, FingerprintPaymentCallback callback) {
-        LogUtil.d(TAG, "业务层开始调 startAuthenticate ");
-
-        if (callback == null) {
-            LogUtil.e(TAG, "mFingerprintResultCallback is null");
-            return;
-        }
-        if (activity == null || TextUtils.isEmpty(LName)) {
-            LogUtil.e(TAG, "param activity is null");
-            callback.onFailed(FingerprintSDK.CODE_4, " activity or LName is  null");
-            return;
-        }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            LogUtil.e(TAG, "android 系统版本号低于 6.0");
-            callback.onFailed(FingerprintSDK.CODE_2, "android 系统版本号低于 6.0");
-            return;
-        }
-        FingerprintMain.getInstance().setPaymentCallback(callback);
-        FingerprintMain.getInstance().startAuthenticate(activity, LName, verifyType);
-    }
-
-    /**
-     * 打开指纹设置界面
-     *
-     * @param mContext
-     */
-    public static void openFingerprintSettings(Context mContext) {
-        if (mContext == null) {
-            LogUtil.e(TAG, "param error: context is null");
-            return;
-        }
-        FingerprintUtil.openFingerPrintSettingPage(mContext);
-    }
-
-    /**
-     * 取消指纹验证, 关闭验证弹窗
-     */
-    public static void cancelFingerprintRecognition() {
-        FingerprintMain.getInstance().cancelFingerprintRecognition();
     }
 
     public static void putIv(Context mContext, String iv) {

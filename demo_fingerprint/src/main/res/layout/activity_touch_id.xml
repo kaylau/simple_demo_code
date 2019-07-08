@@ -5,9 +5,15 @@
     android:background="#F1F2F6"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="开启/关闭指纹验证" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="#FFFFFF"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"

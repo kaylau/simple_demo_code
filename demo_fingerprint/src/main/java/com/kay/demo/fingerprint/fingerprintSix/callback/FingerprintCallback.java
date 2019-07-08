@@ -1,13 +1,12 @@
 package com.kay.demo.fingerprint.fingerprintSix.callback;
 
-public interface FingerprintPaymentCallback {
+import javax.crypto.Cipher;
 
+public interface FingerprintCallback {
     /**
-     * @param iv
-     * @param publicKey  用于指纹支付开启接口的传参
-     * @param privateKey 用于保存指纹开启的状态
+     * 验证成功,返回cipher加解密对象
      */
-    void onSuccess(String iv, String publicKey, String privateKey);
+    void onSuccess(Cipher cipher);
 
     /**
      * 校验失败
