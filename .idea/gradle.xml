@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/demo_fcm" />
+            <option value="$PROJECT_DIR$/demo_fingerprint" />
+            <option value="$PROJECT_DIR$/demo_http" />
+            <option value="$PROJECT_DIR$/demo_notification" />
+            <option value="$PROJECT_DIR$/demo_scan" />
+            <option value="$PROJECT_DIR$/demo_spinner" />
+            <option value="$PROJECT_DIR$/demo_viewpager" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

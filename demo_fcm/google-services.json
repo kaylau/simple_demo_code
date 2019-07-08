@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "323003074019",
+    "firebase_url": "https://fir-kay.firebaseio.com",
+    "project_id": "fir-kay",
+    "storage_bucket": "fir-kay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323003074019:android:ef393046680e285a",
+        "android_client_info": {
+          "package_name": "com.kay.demo.push.fcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323003074019-4168e86g2dgvacs91hr024q9gu77io3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIUFcwHx9pwPK1F7wy88UKjH6aA9n3ssc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
