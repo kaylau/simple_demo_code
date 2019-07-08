@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/common_rounded_white_bg">
+
+    <RelativeLayout
+        android:layout_width="255dp"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:id="@+id/sv_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/fingerprint_guide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:src="@mipmap/common_fingerprint_nor" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_fingerprint_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="Touch ID "
+                    android:textColor="#1A1B24"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_fingerprint_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center_horizontal"
+                    android:text="Verify existing fingerprint to login"
+                    android:textColor="#3E4050"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/tv_fingerprint_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_below="@+id/sv_dialog"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/selector_bg_btn_fingerprint"
+            android:gravity="center"
+            android:text="Cancel"
+            android:textColor="#1A1B24"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_dialog_double_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sv_dialog"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View style="@style/line_style" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_dialog_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_dialog_btn_left"
+                    android:gravity="center"
+                    android:text="Cancel"
+                    android:textColor="#1A1B24"
+                    android:textSize="17sp" />
+
+                <View
+                    style="@style/line_style"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/tv_dialog_pin"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/common_dialog_btn_right"
+                    android:gravity="center"
+                    android:text="Verify PIN"
+                    android:textColor="@drawable/selector_color_btn"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

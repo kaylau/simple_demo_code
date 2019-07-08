@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp"
+                android:color="#E6E6E9" />
+            <!-- 填充的颜色 按下-->
+            <solid android:color="#E6E6E9" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+
+
+    <item android:state_enabled="true" android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp"
+                android:color="#E6E6E9" />
+            <!-- 填充的颜色 正常-->
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+
+</selector>

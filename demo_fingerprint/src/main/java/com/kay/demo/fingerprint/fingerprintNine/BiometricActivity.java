@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
+import com.kay.demo.fingerprint.util.LogUtil;
 import com.kay.demo.fingerprint.util.ToastUtil;
 
 /**
@@ -33,7 +33,7 @@ public class BiometricActivity extends AppCompatActivity {
                 .setNegativeButton("取消", getMainExecutor(), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Log.e(TAG, "Cancel button clicked");
+                        LogUtil.e(TAG, "Cancel button clicked");
                         finish();
                     }
                 })
@@ -44,7 +44,7 @@ public class BiometricActivity extends AppCompatActivity {
             @Override
             public void onCancel() {
                 //handle cancel result
-                Log.e(TAG, "Canceled");
+                LogUtil.e(TAG, "Canceled");
             }
         });
 
@@ -52,8 +52,8 @@ public class BiometricActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationError(int errorCode, CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                Log.e(TAG, "onAuthenticationError: errorCode = " + errorCode);
-                Log.e(TAG, "onAuthenticationError: errString = " + errString.toString());
+                LogUtil.e(TAG, "onAuthenticationError: errorCode = " + errorCode);
+                LogUtil.e(TAG, "onAuthenticationError: errString = " + errString.toString());
                 ToastUtil.showToastAtCenterLong(BiometricActivity.this, "errorCode: " + errorCode);
                 finish();
 
@@ -62,7 +62,7 @@ public class BiometricActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
-                Log.e(TAG, "onAuthenticationSucceeded----->");
+                LogUtil.e(TAG, "onAuthenticationSucceeded----->");
                 ToastUtil.showToastAtCenterLong(BiometricActivity.this, "onAuthenticationSucceeded");
                 finish();
             }
@@ -70,7 +70,7 @@ public class BiometricActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
-                Log.e(TAG, "onAuthenticationFailed----->");
+                LogUtil.e(TAG, "onAuthenticationFailed----->");
                 ToastUtil.showToastAtCenterLong(BiometricActivity.this, "onAuthenticationFailed");
             }
         };

@@ -36,4 +36,6 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 //    implementation 'moe.feng.support.biometricprompt:library:1.0.0'
+
+    implementation files('libs/bcprov-jdk15on-1.59.jar')
 }

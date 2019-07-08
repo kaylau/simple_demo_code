@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".fingerprintNine.BiometricActivity" />
+        <activity android:name=".fingerprintSix.ui.TouchIDActivity" />
 
     </application>
 

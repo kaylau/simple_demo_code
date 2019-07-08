@@ -1,4 +1,4 @@
-package com.kay.demo.utils;
+package com.kay.demo.fingerprint.util;
 
 import android.text.TextUtils;
 import android.util.Log;
