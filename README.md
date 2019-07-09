@@ -1,6 +1,6 @@
 # simple_demo_code
 
-demo_fcm FCM 推送 demo
+* demo_fcm FCM 推送 demo
 
 demo_fingerprint 指纹识别 android 6.0 和 9.0
 
