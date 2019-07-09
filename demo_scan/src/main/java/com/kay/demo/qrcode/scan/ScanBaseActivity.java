@@ -25,7 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.kay.demo.scan.R;
+import com.kay.demo.qrcode.R;
 import com.kay.demo.qrcode.decoder.DecoderSDK;
 import com.kay.demo.qrcode.scan.camera.CameraManager;
 import com.kay.demo.qrcode.scan.decode.MainHandler;

@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.kay.demo.qrcode.create.QRCodeUtil;
-import com.kay.demo.scan.R;
 
 /**
  * Date: 2019/7/9 上午10:01

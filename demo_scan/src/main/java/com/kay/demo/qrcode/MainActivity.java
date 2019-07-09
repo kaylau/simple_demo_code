@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.kay.demo.scan.R;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 

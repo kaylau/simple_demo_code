@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.kay.demo.scan">
+    package="com.kay.demo.qrcode">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -26,7 +26,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name="com.kay.demo.qrcode.MainActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,12 +35,12 @@
         </activity>
 
         <activity
-            android:name="com.kay.demo.qrcode.CaptureActivity"
+            android:name=".CaptureActivity"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="com.kay.demo.qrcode.QRCodeActivity"
+            android:name=".QRCodeActivity"
             android:screenOrientation="portrait" />
 
     </application>
