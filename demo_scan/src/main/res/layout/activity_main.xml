@@ -1,25 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:layout_height="match_parent">
+    android:background="#f2f2f2"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_result"
+        android:id="@+id/tv_qrCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="50dp"
+        android:background="#99fff9"
         android:padding="5dp"
-        android:textSize="18dp" />
+        android:text="二维码显示界面"
+        android:textColor="#000"
+        android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_open_camera"
+        android:id="@+id/tv_open_scan"
         android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:background="#99fff9"
         android:padding="5dp"
         android:text="打开扫码界面"
         android:textColor="#000"
         android:textSize="20sp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="识别的二维码结果"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
+
+</LinearLayout>

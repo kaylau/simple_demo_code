@@ -1,12 +1,5 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
     <!--确定按钮-->
     <style name="btn_sure">
@@ -14,6 +7,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/btn_select_left</item>
         <item name="android:textColor">@drawable/selector_bg_text</item>
+    </style>
+
+    <style name="AppCommonTheme" parent="@android:style/Theme">
+        <item name="android:windowNoTitle">true</item> <!-- 设置没有标题 -->
+        <item name="android:background">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
 </resources>
