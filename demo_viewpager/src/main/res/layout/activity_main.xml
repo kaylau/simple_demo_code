@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -15,21 +15,29 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <TextView
-                android:id="@+id/tv_valid"
+            <RelativeLayout
+                android:id="@+id/rl_valid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Valid" />
+                android:padding="5dp">
 
-            <View
-                android:id="@+id/line_valid"
-                android:layout_width="80dp"
-                android:layout_height="3dp"
-                android:layout_below="@+id/tv_valid"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/colorAccent" />
+                <TextView
+                    android:id="@+id/tv_valid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Valid" />
+
+                <View
+                    android:id="@+id/line_valid"
+                    android:layout_width="80dp"
+                    android:layout_height="3dp"
+                    android:layout_below="@+id/tv_valid"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorAccent" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -39,21 +47,29 @@
             android:layout_weight="1"
             android:gravity="center">
 
-            <TextView
-                android:id="@+id/tv_history"
+            <RelativeLayout
+                android:id="@+id/rl_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="History" />
+                android:padding="5dp">
 
-            <View
-                android:id="@+id/line_history"
-                android:layout_width="80dp"
-                android:layout_height="3dp"
-                android:layout_below="@+id/tv_history"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="5dp"
-                android:background="@color/colorAccent" />
+                <TextView
+                    android:id="@+id/tv_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="History" />
+
+                <View
+                    android:id="@+id/line_history"
+                    android:layout_width="80dp"
+                    android:layout_height="3dp"
+                    android:layout_below="@+id/tv_history"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/colorAccent" />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

@@ -27,8 +27,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     private void initView() {
-        findViewById(R.id.tv_valid).setOnClickListener(this);
-        findViewById(R.id.tv_history).setOnClickListener(this);
+        findViewById(R.id.rl_valid).setOnClickListener(this);
+        findViewById(R.id.rl_history).setOnClickListener(this);
         line_valid = findViewById(R.id.line_valid);
         line_history = findViewById(R.id.line_history);
         showLineValid();
@@ -76,10 +76,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         int id = v.getId();
 
         switch (id) {
-            case R.id.tv_valid:
+            case R.id.rl_valid:
                 viewPager.setCurrentItem(0);
                 break;
-            case R.id.tv_history:
+            case R.id.rl_history:
                 viewPager.setCurrentItem(1);
                 break;
         }
