@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item android:state_pressed="false">
+    <layer-list>
+        <item>
+            <shape>
+                <solid android:color="@color/CC_00000000" />
+            </shape>
+        </item>
+        <item android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp">
+            <!-- 中间的背景色 -->
+            <bitmap android:gravity="center" android:src="@mipmap/common_title_bar_back_white" />
+        </item>
+    </layer-list>
+</item>
+
+
+<item android:state_pressed="true">
+    <layer-list>
+        <item>
+            <shape>
+                <solid android:color="@color/CC_00000000" />
+            </shape>
+        </item>
+        <item android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp">
+            <!-- 中间的背景色 -->
+            <bitmap android:gravity="center" android:src="@mipmap/common_title_bar_back_white_pressed" />
+        </item>
+    </layer-list>
+</item>
+
+</selector>
