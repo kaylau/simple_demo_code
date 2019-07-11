@@ -19,7 +19,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_two.text = "test"
+        initView()
+
+    }
+
+    private fun initView() {
+        btn_two.text = "基本语法"
 
         tv_one.setOnClickListener(this)
         btn_two.setOnClickListener(this)
@@ -30,19 +35,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        // 当做语句使用
         when (v?.id) {
             R.id.tv_one -> {
                 tvClickImpl(tv_one, "tv_one")
             }
             R.id.btn_two -> {
-                test()
+                grammar()
             }
         }
-    }
-
-    private fun test() {
-        val sum = sum(3, 9)
-        LogUtil.e(tag, "sum: $sum")
     }
 
     private fun tvClickImpl(tv: TextView, text: String) {
@@ -60,5 +61,52 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val sum = a + b
         longToast("$a+$b=$sum")
         return sum
+    }
+
+    /**
+     * 基本语法
+     */
+    private fun grammar() {
+        val sum = sum(3, 9)
+        LogUtil.e(tag, "sum: $sum")
+
+        KotlinDemo.testVal()
+
+        val parseInt = KotlinDemo.parseInt(null)
+        LogUtil.e(tag, " parseInt = $parseInt")
+        val parseInt1 = KotlinDemo.parseInt("123987289")
+        LogUtil.e(tag, " parseInt1 = $parseInt1")
+
+        val strLen = KotlinDemo.getStringLength("qwe asd 123")
+        LogUtil.d(tag, "strLen: $strLen")
+        val intLen = KotlinDemo.getStringLength(123456)
+        LogUtil.d(tag, "intLen: $intLen")
+
+        KotlinDemo.asStr(null)
+        KotlinDemo.asStrs("1234567qwe")
+//        KotlinDemo.asStrs('q')
+
+        KotlinDemo.testFor()
+
+        KotlinDemo.testWhile()
+
+        KotlinDemo.testWhen(parseInt1)
+        KotlinDemo.testWhen(0)
+        KotlinDemo.testWhen(1)
+        KotlinDemo.testWhen(2)
+        KotlinDemo.testWhen(3)
+        KotlinDemo.testWhen(6)
+
+        val prefix = KotlinDemo.hasPrefix("prefix")
+        LogUtil.i(tag, "hasPrefix: $prefix")
+
+        val qwe = KotlinDemo.hasPrefix("qwe")
+        LogUtil.i(tag, "hasPrefix: $qwe")
+
+        KotlinDemo.testIn()
+
+        KotlinDemo.testList()
+
+
     }
 }

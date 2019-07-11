@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="50dp"
+    android:layout_marginTop="10dp"
     android:layout_marginRight="50dp"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -19,6 +19,12 @@
         android:text="Hello World!"
         android:textColor="#fff"
         android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="kotlin 学习" />
 
     <Button
         android:id="@+id/btn_two"

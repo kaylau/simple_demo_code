@@ -18,7 +18,7 @@ public class LogUtil {
         if (true) {
             if (!TextUtils.isEmpty(msg)) {
                 Log.e(fileName, getFunctionName());
-                Log.e(fileName, "-----kay--" + fileName + "--" + msg);
+                Log.e(fileName, "---kay~~~> " + fileName + " ---> " + msg);
             }
         }
     }
@@ -31,7 +31,7 @@ public class LogUtil {
         if (true) {
             if (!TextUtils.isEmpty(msg)) {
                 Log.i(fileName, getFunctionName());
-                Log.i(fileName, "-----pay--" + fileName + "--" + msg);
+                Log.i(fileName, "---kay~~~> " + fileName + " ---> " + msg);
             }
         }
     }
@@ -45,7 +45,7 @@ public class LogUtil {
             writeLogFromSDCard("", "", msg);
         }
         Log.e(fileName, getFunctionName());
-        Log.e(fileName, "-----pay--" + fileName + "--" + msg);
+        Log.e(fileName, "---kay~~~> " + fileName + " ---> " + msg);
     }
 
     public static void d(String tag, String msg) {
@@ -55,7 +55,7 @@ public class LogUtil {
         if (true) {
             if (!TextUtils.isEmpty(msg)) {
                 Log.d(tag, getFunctionName());
-                Log.d(tag, "-----pay--" + tag + "--"  + msg);
+                Log.d(tag, "---kay~~~> " + tag + " ---> "  + msg);
             }
         }
     }
@@ -72,7 +72,7 @@ public class LogUtil {
         if (true) {
             if (!TextUtils.isEmpty(msg)) {
                 Log.e(tag, getFunctionName());
-                Log.e(tag, "-----pay--" + tag + "--" + msg);
+                Log.e(tag, "---kay~~~> " + tag + " ---> " + msg);
             }
         }
     }
@@ -84,7 +84,7 @@ public class LogUtil {
         if (true) {
             if (!TextUtils.isEmpty(msg)) {
                 Log.i(tag, getFunctionName());
-                Log.i(tag, "-----pay--" + tag + "--" + msg);
+                Log.i(tag, "---kay~~~> " + tag + " ---> " + msg);
             }
         }
     }
