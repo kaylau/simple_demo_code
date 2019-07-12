@@ -7,6 +7,8 @@ package com.kay.demo.kotlin.kt
  */
 open class BaseDog {
 
+    constructor()
+
     constructor(name: String, age: Int) : this(name, "--x", age) {
         println("BaseDog name=$name age=$age")
     }
@@ -14,4 +16,13 @@ open class BaseDog {
     constructor(name: String, nickName: String, age: Int) {
         println("BaseDog name=$name nickName=$nickName, age=$age")
     }
+
+
+    open fun watch() {
+        println("fun ----------> BaseDog watch")
+    }
+
+    open var age = 2
+
+    open var x: Int = 900
 }

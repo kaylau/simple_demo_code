@@ -13,7 +13,7 @@ fun main() {
  * 主构造函数是类头的一部分：它跟在类名（与可选的类型参数）后。
  * 如果主构造函数没有任何注解或者可见性修饰符，可以省略这个 constructor 关键字。
  */
-class Person constructor(name: String) {
+open class Person constructor(name: String) {
 
     // 在实例初始化期间，初始化块按照它们出现在类体中的顺序执行，与属性初始化器交织在一起.
     val firstProperty = "First property: $name".also(::println)
@@ -34,4 +34,12 @@ class Person constructor(name: String) {
     constructor(firstName: String, lastName: String, age: Int) : this(lastName)
 
     constructor(name: String, age: Int) : this(name, "nickName", age)
+
+    fun eat() {
+        println("---> Person.eat")
+    }
+
+    open fun sleep() {
+        println("---> Person.sleep")
+    }
 }

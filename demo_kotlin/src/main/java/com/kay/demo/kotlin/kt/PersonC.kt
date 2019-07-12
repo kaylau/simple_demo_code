@@ -1,5 +1,10 @@
 package com.kay.demo.kotlin.kt
 
+import com.kay.demo.kotlin.kt.test.pp
+
+fun main() {
+    pp()
+}
 /**
  * Date: 2019/7/12 上午10:46
  * Author: kay lau

@@ -2,9 +2,17 @@ package com.kay.demo.kotlin.kt
 
 fun main() {
 
-    DogA("zxc")
-    DogA("qqw", 2)
-    DogA("asd", 1, "xxwxx")
+    var baseDog = BaseDog()
+    println("baseDog.x=${baseDog.x}")
+
+//    DogA("zxc")
+//    DogA("qqw", 2)
+//    DogA("asd", 1, "xxwxx")
+    val dogA = DogA()
+//    dogA.watch()
+    println("dogA.x=${dogA.x}")
+    println("dogA.age=${dogA.age}")
+
 }
 
 /**
@@ -15,7 +23,9 @@ fun main() {
  * 或委托给另一个构造函数做到这一点。
  * 注意，在这种情况下，不同的次构造函数可以调用基类型的不同的构造函数：
  */
-class DogA : BaseDog {
+open class DogA : BaseDog {
+
+    constructor() : super()
 
     constructor(name: String) : this(name, 3) {
         println("---------------DogA constructor1---------------")
@@ -29,5 +39,16 @@ class DogA : BaseDog {
         println("---------------DogA constructor3---------------")
     }
 
+    /**
+     * 禁止再次覆盖，使用 final 关键字.
+     */
+    final override fun watch() {
+        super.watch()
+        println("fun ----------> DogA watch")
+    }
+
+    override var x: Int = 9
+
+    override var age: Int = 8
 
 }
