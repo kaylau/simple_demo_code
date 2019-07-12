@@ -4,16 +4,32 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.kay.demo.kotlin.kt.HttpRequestCallback
+import com.kay.demo.kotlin.kt.Person
+import com.kay.demo.kotlin.kt.PersonA
 import com.kay.demo.kotlin.util.LogUtil
 
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     var tag = "MainActivity"
     var i = 0
+
+    var callback = object : HttpRequestCallback {
+
+        override fun onCallback(json: JSONObject?, retCode: Int?, errMsg: String?) {
+            onLis(errMsg)
+        }
+
+        private fun onLis(errMsg: String?) {
+            LogUtil.e(tag, "errMsg: $errMsg")
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         tv_one.setOnClickListener(this)
         btn_two.setOnClickListener(this)
+        btn_class.setOnClickListener(this)
 
         tv_three.setOnClickListener {
             tvClickImpl(tv_three, "tv_three")
@@ -39,11 +56,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.tv_one -> {
                 tvClickImpl(tv_one, "tv_one")
+                callback.onCallback(null, 0, "xxx errMsg... ...errMsg... ...")
             }
             R.id.btn_two -> {
                 grammar()
+                pay(23, object : HttpRequestCallback {
+                    override fun onCallback(json: JSONObject?, retCode: Int?, errMsg: String?) {
+                        LogUtil.e(tag, "retCode: $retCode")
+                    }
+
+                })
             }
+            R.id.btn_class -> testClass()
         }
+    }
+
+    private fun testClass() {
+//        Person("hello world")
+        val personA = PersonA("hi", "hello", 3)
+//        personA.age = 9
+        val age = personA.age
+        "age: $age".also(::println)
+
     }
 
     private fun tvClickImpl(tv: TextView, text: String) {
@@ -107,6 +141,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         KotlinDemo.testList()
 
+    }
+
+    fun pay(price: Int?, callback: HttpRequestCallback?) {
+
+        callback?.onCallback(null, price, "errMsg")
 
     }
 }
