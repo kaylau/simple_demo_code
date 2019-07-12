@@ -3,6 +3,7 @@ package com.kay.demo.kotlin.kt
 import com.kay.demo.kotlin.kt.test.pp
 
 fun main() {
+    // 在 Kotlin 中类没有静态方法。在大多数情况下，它建议简单地使用包级函数。
     pp()
 }
 /**
