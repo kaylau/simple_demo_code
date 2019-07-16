@@ -56,7 +56,7 @@ open class E {
     }
 }
 
-class C : A(), B, D {
+open class C : A(), B, D {
     // 编译器要求覆盖 f()：
     // f() 由 C 继承了多个实现，所以我们必须在 C 中覆盖 f() 并且提供我们自己的实现来消除歧义。
     override fun f() {

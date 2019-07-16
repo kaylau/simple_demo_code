@@ -3,7 +3,8 @@ package com.kay.demo.kotlin.kt.test
 /**
  * Date: 2019/7/16 上午10:04
  * Author: kay lau
- * Description:
+ * Description: 可见性修饰符
+ *
  * 对于类内部声明的成员：
  * private 意味着只在这个类内部（包含其所有成员）可见；
  * protected—— 和 private一样 + 在子类中可见。
