@@ -1,6 +1,7 @@
 package com.kay.demo.kotlin
 
-import com.kay.demo.kotlin.util.LogUtil
+import com.kay.demo.kotlin.util.logutil.LogUtil
+
 
 /**
  * Date: 2019/7/10 下午5:26

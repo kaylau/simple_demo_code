@@ -1,13 +1,15 @@
 package com.kay.demo.kotlin
 
+import android.app.Activity
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import com.kay.demo.kotlin.kt.HttpRequestCallback
-import com.kay.demo.kotlin.kt.Person
 import com.kay.demo.kotlin.kt.PersonA
-import com.kay.demo.kotlin.util.LogUtil
+import com.kay.demo.kotlin.ui.FirstActivity
+import com.kay.demo.kotlin.util.logutil.LogUtil
 
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.longToast
@@ -16,7 +18,7 @@ import org.json.JSONObject
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    var tag = "MainActivity"
+    private var tag = MainActivity::class.java.simpleName
     var i = 0
 
     var callback = object : HttpRequestCallback {
@@ -47,7 +49,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn_class.setOnClickListener(this)
 
         tv_three.setOnClickListener {
-            tvClickImpl(tv_three, "tv_three")
+            // tvClickImpl(tv_three, "tv_three")
+            val intent = Intent()
+            intent.putExtra("key", tag)
+            intent.setClass(this, FirstActivity::class.java)
+            startActivityForResult(intent, 100)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
+            val name = data?.getStringExtra("name")
+            val pwd = data?.getStringExtra("pwd")
+            longToast("name = $name, pwd = $pwd")
         }
     }
 
