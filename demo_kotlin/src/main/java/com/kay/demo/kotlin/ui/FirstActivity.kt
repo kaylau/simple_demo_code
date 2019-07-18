@@ -5,17 +5,18 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.view.View
 import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.util.logutil.LogUtil
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_first.*
+import kotlinx.android.synthetic.main.activity_main.tv_one
 
 /**
  * Date: 2019/7/17 下午4:19
  * Author: kay lau
  * Description:
  */
-class FirstActivity : AppCompatActivity() {
+class FirstActivity : AppCompatActivity(), View.OnClickListener {
 
     private val tag = FirstActivity::class.java.simpleName
 
@@ -35,6 +36,18 @@ class FirstActivity : AppCompatActivity() {
         LogUtil.i(tag, "$tag onCreate")
         LogUtil.d(tag, "$tag onCreate")
         LogUtil.e(tag, "$tag onCreate")
+
+        btn_recycle_view.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_recycle_view -> {
+                val intent = Intent()
+                intent.setClass(this, RecycleActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {

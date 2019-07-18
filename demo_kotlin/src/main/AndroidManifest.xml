@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.FirstActivity"/>
+        <activity android:name=".ui.RecycleActivity"/>
     </application>
 
 </manifest>
