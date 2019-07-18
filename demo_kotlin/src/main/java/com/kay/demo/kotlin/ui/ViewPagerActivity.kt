@@ -1,6 +1,5 @@
 package com.kay.demo.kotlin.ui
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -22,7 +21,6 @@ import org.jetbrains.anko.toast
  * Description:
  */
 class ViewPagerActivity : FragmentActivity(), View.OnClickListener {
-
 
     private var pWidth = 0          // 图片宽度
     private var offset = 0          // 图片偏移量

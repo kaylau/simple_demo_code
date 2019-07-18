@@ -2,7 +2,6 @@ package com.kay.demo.kotlin.util
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 
 /**
