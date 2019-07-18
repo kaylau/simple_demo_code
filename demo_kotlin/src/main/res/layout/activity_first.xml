@@ -31,6 +31,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/btn_view_pager"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -38,7 +39,7 @@
             android:background="#e6e6e6"
             android:padding="5dp"
             android:gravity="center"
-            android:text=""
+            android:text="ViewPager"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
 

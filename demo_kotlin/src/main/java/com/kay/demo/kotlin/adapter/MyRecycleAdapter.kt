@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.kay.demo.kotlin.R
-import com.kay.demo.kotlin.data.ItemData
+import com.kay.demo.kotlin.data.RecycleViewItemData
 
 /**
  * Date: 2019/7/18 上午10:42
@@ -17,7 +17,7 @@ import com.kay.demo.kotlin.data.ItemData
  */
 class MyRecycleAdapter(
     context: Context,
-    list: MutableList<ItemData>
+    list: MutableList<RecycleViewItemData>
 ) : RecyclerView.Adapter<MyRecycleAdapter.ViewHolder>(), View.OnClickListener {
 
     override fun onClick(v: View?) {

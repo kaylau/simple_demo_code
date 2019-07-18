@@ -38,16 +38,16 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener {
         LogUtil.e(tag, "$tag onCreate")
 
         btn_recycle_view.setOnClickListener(this)
+        btn_view_pager.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
+        val intent = Intent()
         when (v?.id) {
-            R.id.btn_recycle_view -> {
-                val intent = Intent()
-                intent.setClass(this, RecycleActivity::class.java)
-                startActivity(intent)
-            }
+            R.id.btn_recycle_view -> intent.setClass(this, RecycleActivity::class.java)
+            R.id.btn_view_pager -> intent.setClass(this, ViewPagerActivity::class.java)
         }
+        startActivity(intent)
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {

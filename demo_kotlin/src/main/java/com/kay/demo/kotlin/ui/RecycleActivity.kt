@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.adapter.MyRecycleAdapter
-import com.kay.demo.kotlin.data.ItemData
+import com.kay.demo.kotlin.data.RecycleViewItemData
 import com.kay.demo.kotlin.util.logutil.LogUtil
 import kotlinx.android.synthetic.main.activity_recycle.*
 import org.jetbrains.anko.longToast
@@ -20,7 +20,7 @@ class RecycleActivity : Activity() {
 
     private val tag: String = RecycleActivity::class.java.simpleName
 
-    private var itemList = mutableListOf<ItemData>()
+    private var itemList = mutableListOf<RecycleViewItemData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,11 +59,11 @@ class RecycleActivity : Activity() {
             for (index in 1..imgList.size) {
                 if (index == 3) {
                     itemList.add(
-                        ItemData()
+                        RecycleViewItemData()
                     )
                 } else {
                     itemList.add(
-                        ItemData(
+                        RecycleViewItemData(
                             "name --> ${index - 1}",
                             imgList[index - 1],
                             "90123987$index-1"

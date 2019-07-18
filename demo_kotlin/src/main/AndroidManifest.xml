@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".ui.FirstActivity"/>
         <activity android:name=".ui.RecycleActivity"/>
+        <activity android:name=".ui.ViewPagerActivity"/>
     </application>
 
 </manifest>

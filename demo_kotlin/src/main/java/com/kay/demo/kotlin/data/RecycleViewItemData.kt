@@ -7,7 +7,7 @@ import com.kay.demo.kotlin.R
  * Author: kay lau
  * Description:
  */
-data class ItemData(
+data class RecycleViewItemData(
     var name: String = "name",
     var resId: Int? = R.mipmap.ic_launcher_round,
     var phone: String = "xxx1234560"
