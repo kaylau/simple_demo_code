@@ -1,4 +1,4 @@
-package com.kay.demo.kotlin
+package com.kay.demo.kotlin.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -6,9 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.kt.HttpRequestCallback
+import com.kay.demo.kotlin.kt.KotlinDemo
 import com.kay.demo.kotlin.kt.PersonA
-import com.kay.demo.kotlin.ui.FirstActivity
 import com.kay.demo.kotlin.util.logutil.LogUtil
 
 import kotlinx.android.synthetic.main.activity_main.*

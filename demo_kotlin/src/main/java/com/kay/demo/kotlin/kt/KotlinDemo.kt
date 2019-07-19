@@ -1,4 +1,4 @@
-package com.kay.demo.kotlin
+package com.kay.demo.kotlin.kt
 
 import com.kay.demo.kotlin.util.logutil.LogUtil
 

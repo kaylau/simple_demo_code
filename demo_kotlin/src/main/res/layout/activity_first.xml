@@ -24,8 +24,8 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="#e6e6e6"
-            android:padding="5dp"
             android:gravity="center"
+            android:padding="10dp"
             android:text="Recycle View"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
@@ -37,8 +37,8 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="#e6e6e6"
-            android:padding="5dp"
             android:gravity="center"
+            android:padding="10dp"
             android:text="ViewPager"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
@@ -48,9 +48,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:background="#e6e6e6"
-            android:padding="5dp"
+            android:gravity="center"
+            android:padding="10dp"
             android:text=""
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />

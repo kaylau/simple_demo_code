@@ -1,4 +1,4 @@
-package com.kay.demo.kotlin.ui
+package com.kay.demo.kotlin.viewpager
 
 import android.os.Build
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.View
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import com.kay.demo.kotlin.R
-import com.kay.demo.kotlin.ui.fragment.*
+import com.kay.demo.kotlin.viewpager.fragment.*
 import com.kay.demo.kotlin.util.ToolUtil
 import kotlinx.android.synthetic.main.activity_view_pager.*
 import org.jetbrains.anko.displayMetrics

@@ -1,4 +1,4 @@
-package com.kay.demo.kotlin.ui.fragment
+package com.kay.demo.kotlin.viewpager.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle

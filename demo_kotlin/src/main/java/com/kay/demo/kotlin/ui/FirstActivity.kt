@@ -7,7 +7,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.kay.demo.kotlin.R
+import com.kay.demo.kotlin.recycleview.RecycleActivity
 import com.kay.demo.kotlin.util.logutil.LogUtil
+import com.kay.demo.kotlin.viewpager.ViewPagerActivity
 import kotlinx.android.synthetic.main.activity_first.*
 import kotlinx.android.synthetic.main.activity_main.tv_one
 

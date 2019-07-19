@@ -1,4 +1,4 @@
-package com.kay.demo.kotlin.ui.fragment
+package com.kay.demo.kotlin.viewpager.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -14,9 +14,9 @@ import com.kay.demo.kotlin.R
  * Author: kay lau
  * Description:
  */
-class FragmentFive : Fragment() {
+class FragmentFour : Fragment() {
 
-    private val fragmentTag = FragmentFive::class.java.simpleName
+    private val fragmentTag = FragmentFour::class.java.simpleName
 
     override fun onCreateView(
         inflater: LayoutInflater,

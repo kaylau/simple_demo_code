@@ -1,12 +1,10 @@
-package com.kay.demo.kotlin.ui
+package com.kay.demo.kotlin.recycleview
 
 import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.kay.demo.kotlin.R
-import com.kay.demo.kotlin.adapter.MyRecycleAdapter
-import com.kay.demo.kotlin.data.RecycleViewItemData
 import com.kay.demo.kotlin.util.logutil.LogUtil
 import kotlinx.android.synthetic.main.activity_recycle.*
 import org.jetbrains.anko.longToast

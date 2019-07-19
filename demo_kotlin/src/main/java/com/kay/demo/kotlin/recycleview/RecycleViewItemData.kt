@@ -1,4 +1,4 @@
-package com.kay.demo.kotlin.data
+package com.kay.demo.kotlin.recycleview
 
 import com.kay.demo.kotlin.R
 
