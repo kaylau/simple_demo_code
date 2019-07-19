@@ -44,6 +44,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/btn_tab_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -51,7 +52,7 @@
             android:background="#e6e6e6"
             android:gravity="center"
             android:padding="10dp"
-            android:text=""
+            android:text="TabLayout"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
 

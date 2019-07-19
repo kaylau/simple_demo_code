@@ -18,9 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.FirstActivity"/>
-        <activity android:name=".recycleview.RecycleActivity"/>
-        <activity android:name=".viewpager.ViewPagerActivity"/>
+        <activity android:name=".ui.FirstActivity" />
+        <activity android:name=".recycleview.RecycleActivity" />
+        <activity android:name=".viewpager.ViewPagerActivity" />
+        <activity android:name=".viewpager.TabLayoutActivity" />
     </application>
 
 </manifest>

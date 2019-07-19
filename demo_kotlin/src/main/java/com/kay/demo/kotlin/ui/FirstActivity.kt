@@ -9,6 +9,7 @@ import android.view.View
 import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.recycleview.RecycleActivity
 import com.kay.demo.kotlin.util.logutil.LogUtil
+import com.kay.demo.kotlin.viewpager.TabLayoutActivity
 import com.kay.demo.kotlin.viewpager.ViewPagerActivity
 import kotlinx.android.synthetic.main.activity_first.*
 import kotlinx.android.synthetic.main.activity_main.tv_one
@@ -41,6 +42,7 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener {
 
         btn_recycle_view.setOnClickListener(this)
         btn_view_pager.setOnClickListener(this)
+        btn_tab_layout.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -48,6 +50,7 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.btn_recycle_view -> intent.setClass(this, RecycleActivity::class.java)
             R.id.btn_view_pager -> intent.setClass(this, ViewPagerActivity::class.java)
+            R.id.btn_tab_layout -> intent.setClass(this, TabLayoutActivity::class.java)
         }
         startActivity(intent)
     }
