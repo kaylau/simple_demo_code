@@ -42,6 +42,10 @@ class FragmentOne : Fragment() {
         val tvSubView = view?.findViewById<TextView>(R.id.tvSubView)
         tvSubView?.text = "这是标签页 $content"
 
+        if (position == null) {
+            return
+        }
+
         val bgFragment = view?.findViewById<View>(R.id.bgFragment)
         when {
             position!! % 2 == 0 -> bgFragment?.setBackgroundColor(Color.RED)
