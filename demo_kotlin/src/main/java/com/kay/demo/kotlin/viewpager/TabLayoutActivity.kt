@@ -71,7 +71,6 @@ class TabLayoutActivity : AppCompatActivity() {
 
         viewPager!!.setPageTransformer(true, MTransformer())
 
-
         tabLayout!!.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(p0: TabLayout.Tab?) {
 
@@ -83,10 +82,10 @@ class TabLayoutActivity : AppCompatActivity() {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val position = tab!!.position
-                viewPager.currentItem = position
                 for (i in customViewList.indices) {
                     selectTab(i, position)
                 }
+                viewPager.setCurrentItem(position, false)
             }
         })
     }
