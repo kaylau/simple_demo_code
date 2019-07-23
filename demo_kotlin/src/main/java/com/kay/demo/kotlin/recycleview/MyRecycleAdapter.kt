@@ -1,6 +1,7 @@
 package com.kay.demo.kotlin.recycleview
 
 import android.content.Context
+import android.support.v4.view.ViewPager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ import com.kay.demo.kotlin.R
  * Description:
  */
 class MyRecycleAdapter(
-    context: Context,
+    context: Context?,
     list: MutableList<RecycleViewItemData>
 ) : RecyclerView.Adapter<MyRecycleAdapter.ViewHolder>(), View.OnClickListener {
 
@@ -36,8 +37,10 @@ class MyRecycleAdapter(
     private val mContext = context
     private val mList = list
     private var mListener: OnItemClickListener? = null
+    lateinit var viewGroup: ViewGroup
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): ViewHolder {
+        this.viewGroup = viewGroup
         val inflate =
             LayoutInflater.from(mContext).inflate(R.layout.item_recycle_layout, null, false)
 
@@ -51,6 +54,9 @@ class MyRecycleAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (viewGroup is ViewPager) {
+            viewGroup.id = mList[position].hashCode()
+        }
         val item = mList[position]
         val resId = item.resId
         holder.ivIcon.setImageResource(resId!!)

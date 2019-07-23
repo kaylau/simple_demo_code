@@ -1,10 +1,12 @@
-package com.kay.demo.kotlin.recycleview
+package com.kay.demo.kotlin.recycleview.activitis
 
 import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.kay.demo.kotlin.R
+import com.kay.demo.kotlin.recycleview.MyRecycleAdapter
+import com.kay.demo.kotlin.recycleview.RecycleViewItemData
 import com.kay.demo.kotlin.util.logutil.LogUtil
 import kotlinx.android.synthetic.main.activity_recycle.*
 import org.jetbrains.anko.longToast
@@ -31,7 +33,8 @@ class RecycleActivity : Activity() {
         recycle_view.layoutManager = LinearLayoutManager(this)
         val adapter = MyRecycleAdapter(this, itemList)
         recycle_view.adapter = adapter
-        adapter.addItemClickListener(object : MyRecycleAdapter.OnItemClickListener {
+        adapter.addItemClickListener(object :
+            MyRecycleAdapter.OnItemClickListener {
             override fun onItemClick(v: View?, position: Int) {
                 longToast("点击了第 ${position + 1} 个item")
             }

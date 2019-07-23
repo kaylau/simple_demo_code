@@ -19,10 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.FirstActivity" />
-        <activity android:name=".recycleview.RecycleActivity" />
+        <activity android:name=".recycleview.activitis.RecycleActivity" />
         <activity android:name=".viewpager.ViewPagerActivity" />
         <activity android:name=".viewpager.TabLayoutActivity" />
         <activity android:name=".viewpager.CustomIndicatorActivity" />
+        <activity android:name=".recycleview.activitis.ScrollRecycleActivity" />
     </application>
 
 </manifest>
