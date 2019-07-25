@@ -24,6 +24,8 @@
         <activity android:name=".viewpager.TabLayoutActivity" />
         <activity android:name=".viewpager.CustomIndicatorActivity" />
         <activity android:name=".recycleview.activitis.ScrollRecycleActivity" />
+        <activity android:name=".demo.HomeJDActivity" />
+        <activity android:name=".demo.JDHomeActivity" />
     </application>
 
 </manifest>

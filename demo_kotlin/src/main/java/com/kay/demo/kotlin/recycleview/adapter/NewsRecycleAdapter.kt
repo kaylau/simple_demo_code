@@ -1,7 +1,6 @@
-package com.kay.demo.kotlin.recycleview
+package com.kay.demo.kotlin.recycleview.adapter
 
 import android.content.Context
-import android.support.v4.view.ViewPager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +8,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.kay.demo.kotlin.R
+import com.kay.demo.kotlin.recycleview.RecycleViewItemData
 
 /**
  * Date: 2019/7/18 上午10:42
  * Author: kay lau
  * Description:
  */
-class MyRecycleAdapter(
+class NewsRecycleAdapter(
     context: Context?,
     list: MutableList<RecycleViewItemData>
-) : RecyclerView.Adapter<MyRecycleAdapter.ViewHolder>(), View.OnClickListener {
+) : RecyclerView.Adapter<NewsRecycleAdapter.ViewHolder>(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         var position = 0
@@ -54,9 +54,9 @@ class MyRecycleAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (viewGroup is ViewPager) {
-            viewGroup.id = mList[position].hashCode()
-        }
+//        if (viewGroup is ViewPager) {
+//            viewGroup.id = mList[position].hashCode()
+//        }
         val item = mList[position]
         val resId = item.resId
         holder.ivIcon.setImageResource(resId!!)

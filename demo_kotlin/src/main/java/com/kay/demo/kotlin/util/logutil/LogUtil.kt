@@ -2,14 +2,12 @@ package com.kay.demo.kotlin.util.logutil
 
 import android.text.TextUtils
 import android.util.Log
-
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 
 object LogUtil {
 
@@ -91,6 +89,10 @@ object LogUtil {
                 Log.d(tag, "-----$kay----- $msg")
             }
         }
+    }
+
+    fun e(msg: String) {
+        e("TAG", msg)
     }
 
     /**

@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
+import android.view.MotionEvent
+import android.view.View
 import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.recycleview.fragments.BaseFragment
 import com.kay.demo.kotlin.recycleview.fragments.CarsFragment
@@ -39,21 +41,34 @@ class ScrollRecycleActivity : AppCompatActivity() {
             mmVewPager.layoutParams = layoutParams
         }
 
-        mScrollView.setScrollViewListener { _, x, y, oldx, oldy ->
-            val rect = Rect()
-            mScrollView.getHitRect(rect)
-            if (llBottom.getLocalVisibleRect(rect)) {
-                LogUtil.e("tag", "llBottom 可见")
-                for (fragment in fragments) {
-                    fragment.onStopSliding()
+        mScrollView.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                val rect = Rect()
+                mScrollView.getHitRect(rect)
+                if (llBottom.getLocalVisibleRect(rect)) {
+                    LogUtil.e("tag", "llBottom 可见")
+                    llScrRel.isIntercept = true
+                    when (event?.action) {
+                        MotionEvent.ACTION_DOWN -> {
+                            mScrollView.setInterceptTouchEvent(true)
+                            LogUtil.e("mScrollView onTouch  按下")
+                        }
+                        MotionEvent.ACTION_MOVE -> {
+                            mScrollView.setInterceptTouchEvent(false)
+                            LogUtil.e("mScrollView onTouch  移动")
+                        }
+                        MotionEvent.ACTION_UP -> {
+                            mScrollView.setInterceptTouchEvent(false)
+                            LogUtil.e("mScrollView onTouch  抬起")
+                        }
+                    }
+                } else {
+                    LogUtil.e("tag", "llBottom 不可见")
+                    llScrRel.isIntercept = false
                 }
-            } else {
-                LogUtil.e("tag", "llBottom 不可见")
-                for (fragment in fragments) {
-                    fragment.onStartSliding()
-                }
+                return false
             }
-        }
+        })
 
         // android M
 //        mScrollView.setOnScrollChangeListener(
@@ -119,4 +134,5 @@ class ScrollRecycleActivity : AppCompatActivity() {
             return mList.size
         }
     }
+
 }

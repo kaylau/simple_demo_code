@@ -3,15 +3,14 @@ package com.kay.demo.kotlin.recycleview.fragments
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.weigt.MyLinearLayoutManager
-import com.kay.demo.kotlin.weigt.MyRecyclerView
 import com.kay.demo.kotlin.recycleview.RecycleViewItemData
-import com.kay.demo.kotlin.recycleview.adapter.CarsRecycleAdapter
+import com.kay.demo.kotlin.recycleview.adapter.NewsRecycleAdapter
 import com.kay.demo.kotlin.util.logutil.LogUtil
 
 /**
@@ -19,26 +18,20 @@ import com.kay.demo.kotlin.util.logutil.LogUtil
  * Author: kay lau
  * Description:
  */
-
 @SuppressLint("ValidFragment")
-class CarsFragment(activity: Activity) : BaseFragment(), View.OnClickListener {
+class NewsFragment(activity: Activity) : BaseFragment() {
 
-    override fun onClick(v: View?) {
-    }
 
     override fun onStopSliding() {
-        relFragmentBg?.visibility = View.VISIBLE
         LogUtil.e("onStopSliding")
     }
 
     override fun onStartSliding() {
-        relFragmentBg?.visibility = View.GONE
         LogUtil.e("onStartSliding")
     }
 
-    internal val tag = CarsFragment::class.java.simpleName
-    var recycleView: MyRecyclerView? = null
-    var relFragmentBg: RelativeLayout? = null
+    internal val tag = NewsFragment::class.java.simpleName
+    var recycleView: RecyclerView? = null
     var itemList = mutableListOf<RecycleViewItemData>()
 
     var mActivity: Activity? = activity
@@ -50,14 +43,13 @@ class CarsFragment(activity: Activity) : BaseFragment(), View.OnClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val inflate = inflater.inflate(R.layout.fragment_list, container, false)
+        val inflate = inflater.inflate(R.layout.fragment_news, container, false)
         initView(inflate)
         return inflate
     }
 
     private fun initView(view: View?) {
-        recycleView = view?.findViewById(R.id.recycleView)
-        relFragmentBg = view?.findViewById(R.id.relFragmentBg)
+        recycleView = view?.findViewById(R.id.newsRecyclerView)
         initData()
     }
 
@@ -66,27 +58,17 @@ class CarsFragment(activity: Activity) : BaseFragment(), View.OnClickListener {
         initListData()
         layoutManager = MyLinearLayoutManager(mActivity)
         recycleView?.layoutManager = layoutManager
-        val adapter =
-            CarsRecycleAdapter(mActivity, itemList)
+        val adapter = NewsRecycleAdapter(mActivity, itemList)
         recycleView?.adapter = adapter
         adapter.notifyDataSetChanged()
 
         adapter.addItemClickListener(object :
-            CarsRecycleAdapter.OnItemClickListener {
+            NewsRecycleAdapter.OnItemClickListener {
             override fun onItemClick(v: View?, position: Int) {
                 LogUtil.e(tag, "点击了第 ${position + 1} 个item")
             }
         })
-
-        relFragmentBg?.setOnClickListener(this)
-
-        recycleView?.viewTreeObserver?.addOnGlobalLayoutListener {
-            val lp = relFragmentBg?.layoutParams
-            lp?.height = recycleView!!.height
-            relFragmentBg?.layoutParams = lp
-        }
     }
-
 
     private fun initListData() {
         val imgList = listOf(
@@ -121,6 +103,6 @@ class CarsFragment(activity: Activity) : BaseFragment(), View.OnClickListener {
             }
         }
 
-        LogUtil.e("tag", "size: ${itemList.size}")
+        LogUtil.e("size: ${itemList.size}")
     }
 }
