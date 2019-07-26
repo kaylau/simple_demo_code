@@ -11,7 +11,7 @@ import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.weigt.MyLinearLayoutManager
 import com.kay.demo.kotlin.weigt.MyRecyclerView
 import com.kay.demo.kotlin.recycleview.RecycleViewItemData
-import com.kay.demo.kotlin.recycleview.adapter.CarsRecycleAdapter
+import com.kay.demo.kotlin.recycleview.adapter.MyRecyclerViewAdapter
 import com.kay.demo.kotlin.util.logutil.LogUtil
 
 /**
@@ -67,12 +67,12 @@ class CarsFragment(activity: Activity) : BaseFragment(), View.OnClickListener {
         layoutManager = MyLinearLayoutManager(mActivity)
         recycleView?.layoutManager = layoutManager
         val adapter =
-            CarsRecycleAdapter(mActivity, itemList)
+            MyRecyclerViewAdapter(mActivity, itemList)
         recycleView?.adapter = adapter
         adapter.notifyDataSetChanged()
 
         adapter.addItemClickListener(object :
-            CarsRecycleAdapter.OnItemClickListener {
+            MyRecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(v: View?, position: Int) {
                 LogUtil.e(tag, "点击了第 ${position + 1} 个item")
             }

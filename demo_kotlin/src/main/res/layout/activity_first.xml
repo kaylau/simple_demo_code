@@ -123,6 +123,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/btn_rv_refresh"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -130,7 +131,7 @@
             android:background="#e6e6e6"
             android:gravity="center"
             android:padding="10dp"
-            android:text=""
+            android:text="RV Refresh"
             android:textColor="@color/colorAccent"
             android:textSize="14sp" />
 

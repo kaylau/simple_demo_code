@@ -26,6 +26,7 @@
         <activity android:name=".recycleview.activitis.ScrollRecycleActivity" />
         <activity android:name=".demo.HomeJDActivity" />
         <activity android:name=".demo.JDHomeActivity" />
+        <activity android:name=".demo.RvRefreshActivity" />
     </application>
 
 </manifest>

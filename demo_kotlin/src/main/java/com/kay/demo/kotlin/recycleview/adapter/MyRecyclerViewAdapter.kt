@@ -16,10 +16,10 @@ import com.kay.demo.kotlin.recycleview.RecycleViewItemData
  * Author: kay lau
  * Description:
  */
-class CarsRecycleAdapter(
+class MyRecyclerViewAdapter(
     context: Context?,
     list: MutableList<RecycleViewItemData>
-) : RecyclerView.Adapter<CarsRecycleAdapter.ViewHolder>(), View.OnClickListener {
+) : RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         var position = 0
@@ -36,9 +36,13 @@ class CarsRecycleAdapter(
     }
 
     private val mContext = context
-    private val mList = list
+    private var mList = list
     private var mListener: OnItemClickListener? = null
     lateinit var viewGroup: ViewGroup
+
+    fun setData(data: ArrayList<RecycleViewItemData>){
+        mList = data
+    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): ViewHolder {
         this.viewGroup = viewGroup

@@ -9,6 +9,7 @@ import android.view.View
 import com.kay.demo.kotlin.R
 import com.kay.demo.kotlin.demo.HomeJDActivity
 import com.kay.demo.kotlin.demo.JDHomeActivity
+import com.kay.demo.kotlin.demo.RvRefreshActivity
 import com.kay.demo.kotlin.recycleview.activitis.RecycleActivity
 import com.kay.demo.kotlin.recycleview.activitis.ScrollRecycleActivity
 import com.kay.demo.kotlin.util.logutil.LogUtil
@@ -51,6 +52,7 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener {
         btn_scroll_recycle.setOnClickListener(this)
         btn_home_jd.setOnClickListener(this)
         btn_jd_home.setOnClickListener(this)
+        btn_rv_refresh.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -63,6 +65,7 @@ class FirstActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_scroll_recycle -> intent.setClass(this, ScrollRecycleActivity::class.java)
             R.id.btn_home_jd -> intent.setClass(this, HomeJDActivity::class.java)
             R.id.btn_jd_home -> intent.setClass(this, JDHomeActivity::class.java)
+            R.id.btn_rv_refresh -> intent.setClass(this, RvRefreshActivity::class.java)
         }
         startActivity(intent)
     }

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.kay.demo.kotlin.R
-import com.kay.demo.kotlin.recycleview.adapter.CarsRecycleAdapter
+import com.kay.demo.kotlin.recycleview.adapter.MyRecyclerViewAdapter
 import com.kay.demo.kotlin.recycleview.RecycleViewItemData
 import com.kay.demo.kotlin.util.logutil.LogUtil
 import kotlinx.android.synthetic.main.activity_recycle.*
@@ -31,10 +31,10 @@ class RecycleActivity : Activity() {
 
     private fun initView() {
         recycle_view.layoutManager = LinearLayoutManager(this)
-        val adapter = CarsRecycleAdapter(this, itemList)
+        val adapter = MyRecyclerViewAdapter(this, itemList)
         recycle_view.adapter = adapter
         adapter.addItemClickListener(object :
-            CarsRecycleAdapter.OnItemClickListener {
+            MyRecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(v: View?, position: Int) {
                 longToast("点击了第 ${position + 1} 个item")
             }
