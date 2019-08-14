@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        EventBus.getDefault().register(this)  //事件的注册
+        EventBus.getDefault().register(this)
 
         tvOpenActivity.visibility = View.VISIBLE
         tvOpenActivity.setOnClickListener {
