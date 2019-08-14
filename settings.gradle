@@ -1,1 +1,1 @@
-include ':demo_scan', ':demo_notification', ':demo_fingerprint', ':demo_spinner', ':demo_viewpager', ':demo_http', ':demo_fcm', ':demo_kotlin'
+include ':demo_scan', ':demo_notification', ':demo_fingerprint', ':demo_spinner', ':demo_viewpager', ':demo_http', ':demo_fcm', ':demo_kotlin', ':demo_eventbus'
