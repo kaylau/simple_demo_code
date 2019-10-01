@@ -5,8 +5,8 @@ buildscript {
     ext.anko_version = "0.10.8"
 
 
-
     repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         google()
         jcenter()
     }
@@ -22,6 +22,7 @@ buildscript {
 
 allprojects {
     repositories {
+        maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         google()
         jcenter()
     }
