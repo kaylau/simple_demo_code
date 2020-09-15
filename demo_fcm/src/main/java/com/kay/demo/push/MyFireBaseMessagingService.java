@@ -1,11 +1,17 @@
 package com.kay.demo.push;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 
@@ -35,6 +41,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         LogUtil.e(TAG, "MyFireBaseMessagingService onCreate--->");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         LogUtil.e(TAG, "From: " + remoteMessage.getFrom());
@@ -57,7 +64,8 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                 }
 
             }
-            sendNotification(title, body);
+            sendNotification(title, body, "subText");
+//            sendNotification(title, body);
 
         }
 
@@ -141,5 +149,48 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         refreshText.putExtra("onNewToken", refreshedToken);
         sendBroadcast(refreshText);
     }
+
+    private static final int NOTIFICATION_ID = 1001;
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void sendNotification(String title, String messageBody, String subText) {
+
+        Intent intent = new Intent(this, PushMsgActivity.class);
+        intent.putExtra("msg", messageBody);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        //1、NotificationManager
+        NotificationManager manager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        /** 2、Builder->Notification
+         *  必要属性有三项
+         *  小图标，通过 setSmallIcon() 方法设置
+         *  标题，通过 setContentTitle() 方法设置
+         *  内容，通过 setContentText() 方法设置*/
+        Notification.Builder builder = new Notification.Builder(this);
+        builder.setContentInfo("Content info")
+                .setContentText(messageBody)//设置通知内容
+                .setContentTitle(title)//设置通知标题
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
+                .setSmallIcon(R.mipmap.ic_launcher_round)//不能缺少的一个属性
+                .setSubText(subText)
+                .setTicker("滚动消息......")
+                .setContentIntent(pendingIntent)
+                .setWhen(System.currentTimeMillis());//设置通知时间，默认为系统发出通知的时间，通常不用设置
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("001","my_channel",NotificationManager.IMPORTANCE_DEFAULT);
+            channel.enableLights(true); //是否在桌面icon右上角展示小红点
+            channel.setLightColor(Color.GREEN); //小红点颜色
+            channel.setShowBadge(true); //是否在久按桌面图标时显示此渠道的通知
+            manager.createNotificationChannel(channel);
+            builder.setChannelId("001");
+        }
+
+        Notification n = builder.build();
+        //3、manager.notify()
+        manager.notify(NOTIFICATION_ID,n);
+    }
+
 
 }

@@ -9,7 +9,7 @@ public class FcmSender {
 	private static final String serverKey = "AAAASzR7xeM:APA91bHieE7Ad6vVHrSMNpB_idaC_vAdqrfi4u2QBdnwj5S157JGnCY33hQLOCvR90j2CSBDjIPjf7FB3-jHE_Nx0sLXf2g4PCenxJNq97LziMEH-EOH6Bv8diEgUcI14khmrarcq8No";
 
 	// apk安装成功获取到的fcm token.
-	 private static final String deviceToken ="fTOAMUw4xw4:APA91bH7lnm3s-9Y1uO8fjMna2b9WuELwSUEhPV8-TLgRhimujTtXErigu77ZJeatUzjTetlXvU-wAQScpM1C0L8tCh4U3MMiPYF2Q7aX2AwCoxXwxil1nnyBISReLD_k7RG9ASXBOMf";
+	 private static final String deviceToken ="fFzDFEJBK_8:APA91bFCTKJx029MixCNA4LE93Jg1N90Taz9LXD-5r5R_97vg5ayHlEYtBSsT4fmKRm_dHofnc-3oMeU4pmtlsXtRnpDMDlSMr1U_0lu3t2UXNZ-vmGpxS9RgwcKxesbMGoc59pjqmHu";
 
 	public static void main(String[] args) {
 		sendData();
